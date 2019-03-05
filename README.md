@@ -4,7 +4,7 @@ Office apps are also placed on start menu if installed ( might have to rename if
 
 ++++++++++++++ADDITIONAL NOTES+++++++++++++++++++++++++++++++++
 
-Let's examine the start menu setup and configuration for all users. In script 3, this simply places the files to make the start menu default for all users. The new xml start menu configuration must be called: LayoutModification.xml, and there cannot be any other .xml files in there. If you noticed I added a shortcut to IE in there. The reason I did this is that shortcut for IE lives in a location that already exists, and is not dependant on looking in the current user profile in the location of:
+Let's examine the start menu setup and configuration for all users. In the script it simply places the files to make the start menu default for all users. The new xml start menu configuration must be called: LayoutModification.xml, and there cannot be any other .xml files in there. If you noticed I added a shortcut to IE in there. The reason I did this is that shortcut for IE lives in a location that already exists, and is not dependant on looking in the current user profile in the location of:
 C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Accessories
 IE shortcut per user profile. 
 So what you say it's there, why should i move it to another location? 
