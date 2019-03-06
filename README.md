@@ -13,3 +13,9 @@ The reason is in my testing is that IE will sometimes appear on the start menu a
 Also, this xml sets the defaults to be placed on the taskbar. I have removed EDGE b/c it simply sucks right now. I added Firefox and Chrome as well as File explorer. 
 There is a note here which I find puzzling is that even though the start menu portion is read only once during profile create, it looks like the taskbar piece could be read every time a user logs on so the minor nuisance is that if a user removes IE, it will come back during the next login. Users can add additional items and they stick. 
 Users also can modify their start menu layout as well and it will stick.
+
+To export the current start menu layout you can run the following elevated powershell command:
+Export-StartLayout -Path "$env:UserProfile\Desktop\StartLayout.xml"
+
+This will create a .xml on the desktop. Use the template I provided to make any changes. 
+The start menu is only read once during create. the Taskbar piece is not
