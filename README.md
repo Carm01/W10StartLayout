@@ -1,23 +1,30 @@
 # Windows 10 Start Menu Layout
-Windows 10 start menu layouts that will remove EDGE from the taskbar. Chrome, Firefox, and IE are added IF installed.
-Office apps are also placed on start menu if installed ( might have to rename if O365 )
-You can simply place the .cmd file, xml file and IE shortcut in a folder, and run it. See notes below
+Windows 10 start menu layouts that will remove EDGE from the task-bar. Chrome, Firefox, and IE are added IF installed.
+Office apps are also placed on start menu if installed ( might have to rename if O365 ).
+To implement this change you can simply place ( download ) the following files:
+- setupStartLayout.cmd
+- Internet Explorer.lnk
+- DefaultLayouts.xml
 
-++++++++++++++ADDITIONAL NOTES+++++++++++++++++++++++++++++++++
+Simply run the file `setupStartLayout.cmd` as administrator.
+_If you wish to modify the file in any way using Notepad++ is highly recommended, and see the notes below._
 
-Let's examine the start menu setup and configuration for all users. In the script it simply places the files to make the start menu default for all users. The new xml start menu configuration must be called: LayoutModification.xml, and there cannot be any other .xml files in there. If you noticed I added a shortcut to IE in there. The reason I did this is that shortcut for IE lives in a location that already exists, and is not dependant on looking in the current user profile in the location of:
-C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Accessories
-IE shortcut per user profile. 
 
-So what you say it's there, why should i move it to another location? 
-The reason is in my testing is that IE will sometimes appear on the start menu and sometimes will not. This is because when a profile is initially created, that part of the xml file is read only once, and if that link is NOT created in the profile BEFORE the xml file is read, it will never see it. That is why this shortcut got moved and has consistently showed up from there on.
+## Script details
+Let's examine the start menu setup and configuration for all users. In the script it simply places the files to make the start menu default for all users.
+ 
+- The new xml start menu configuration must be called: _LayoutModification.xml_, and there should not be any other .xml files in there. 
+- Start menu TILES are read only once during profile create.
+- If you noticed I added a shortcut to IE in there. The reason I moved it there is because the default location is within a users profile, so, per profile basis it is referenced. Moving to a global location ensures that if the xml file is read before the per user shortcut is created then there will be no icon for IE.
 
-Also, this xml sets the defaults to be placed on the taskbar. I have removed EDGE b/c it simply sucks right now. I added Firefox and Chrome as well as File explorer. 
-There is a note here which I find puzzling is that even though the start menu portion is read only once during profile create, it looks like the taskbar piece could be read every time a user logs on so the minor nuisance is that if a user removes IE, it will come back during the next login. Users can add additional items and they stick. 
-Users also can modify their start menu layout as well and it will stick.
+- This xml sets the defaults to be placed on the task-bar. 
+  - I have removed EDGE b/c it simply sucks right now. 
+  - I added Firefox and Chrome as well as File explorer( standard ).
+  - Task-bar layout for the task-bar function: `PinListPlacement="Replace"` are read every login, and will always replace if the user removed.
+  
 
-To export the current start menu layout you can run the following elevated powershell command:
-Export-StartLayout -Path "$env:UserProfile\Desktop\StartLayout.xml"
+- To export the current start menu layout you can run the following elevated power-shell command:
+  
+  `Export-StartLayout -Path "$env:UserProfile\Desktop\StartLayout.xml"`
 
-This will create a .xml on the desktop. Use the template I provided to make any changes. 
-The start menu is only read once during create. the Taskbar piece is not
+This will create a .xml on the desktop that you can use to create your own start-menu layout. Use the template I provided to make any changes. The start menu is only read once during create, and is customizable per user basis. the Task-bar piece is not. 
