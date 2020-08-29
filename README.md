@@ -20,7 +20,7 @@ Let's examine the start menu setup and configuration for all users. In the scrip
 - This xml sets the defaults to be placed on the task-bar. 
   - I have removed EDGE b/c it simply sucks right now. 
   - I added Firefox and Chrome as well as File explorer( standard ).
-  - Task-bar layout for the task-bar function: `PinListPlacement="Replace"` are read every login, and will always replace if the user removed.
+  - Task-bar layout for the task-bar function: `PinListPlacement="Replace"` are read every login, and will always replace if the user removed, meaning this will always be reset to the default pinned icons and remove any customized ones
   
 
 - To export the current start menu layout you can run the following elevated power-shell command:
